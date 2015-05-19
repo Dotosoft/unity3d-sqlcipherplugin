@@ -14,16 +14,14 @@ Plugin to bind SQLite/SQLCipher database to Unity [iOS, Android, MAC , Windows],
 
 ###How to Use:
 
-	SqliteDatabase sqlDB = new SqliteDatabase(“yourdatabasefile”, “yourdirectory”); → init database
-  string query = “SQL QUERY”; → your sql query
-  sqlDB.ExecuteNonQuery(query); → execute Update/Insert sql
-  DataTable tableData = sqlDB.ExecuteQuery (query); → execute query sql
+	SqliteDatabase sqlDB = new SqliteDatabase(“yourdatabasefile”, “yourdirectory”); // init database....
+	string query = “SQL QUERY”; //your sql query....
+	sqlDB.ExecuteNonQuery(query); //execute Update/Insert sql....
+	DataTable tableData = sqlDB.ExecuteQuery (query); //execute query sql....
 
 
 ####IMPORTANT: 
-  If you have your existing database, please put at StreamingAssets, because parameter SqliteDatabase is relative path from that folder. If you don't have database, it will create new one at your device persistent path. Please read Unity Manual for more detail.
-  
-</br></br>
+  If you have your existing database, please put at StreamingAssets, because the second parameter at SqliteDatabase class is relative path from that folder. If you don't have database, it will create new one at your device persistent path when you deploy at runtime. Please read Unity Manual for more detail.
 
 
 ###to execute a query this libs have 3 simple methods:
