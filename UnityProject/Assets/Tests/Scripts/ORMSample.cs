@@ -13,6 +13,10 @@ public class ORMSample : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		#if UNITY_ANDROID
+		MyLibs.InitializeSQLCipher ();
+		#endif
+
 		if (dataObjects.Length < 1) {
 			Write("No data to write database!");
 			return;
@@ -22,23 +26,6 @@ public class ORMSample : MonoBehaviour {
 		Write("Open Database at " + ORMSQLiteInit.pathDB);
 
 		FieldLister lister = new FieldLister();
-//		UserData[] data = new UserData[2];
-//		data[0] = new UserData();
-//		data[0].ID = 1;
-//		data[0].Name = "Joko";
-//		data[0].Hoge = "Widodo";
-//		data[0].Age = 50;
-//		data[0].LastUpdated = new DateTime(2013,4,1);
-//		data[0].NestedClass.Fuga = "bbbb";
-//		data[0].NestedClass.Hoge = 23;
-//		
-//		data[1] = new UserData();
-//		data[1].ID = 2;
-//		data[1].Name = "Jusuf";
-//		data[1].Hoge = "Kalla";
-//		data[1].Age = 50;
-//		data[1].AddressData = "aaaaa";
-//		data[1].LastUpdated = new DateTime(2013,5,1);
 		
 		Write(dataObjects[0].ToString());
 		var info = lister.ListUp<UserData>();
@@ -64,6 +51,10 @@ public class ORMSample : MonoBehaviour {
 		Write("Json = {0}", json);
 		Write(fromJson[0].ToString());
 		Write(fromJson[1].ToString());
+
+		#if UNITY_ANDROID
+		MyLibs.ToastMessage ("SQLCipher Done");
+		#endif
 	}
 	
 	// Update is called once per frame

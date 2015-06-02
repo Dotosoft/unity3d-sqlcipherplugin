@@ -12,6 +12,10 @@ public class SQLSample : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		#if UNITY_ANDROID
+		MyLibs.InitializeSQLCipher ();
+		#endif
+
 		database = new SqliteDatabase(dbFilePath, dbDirectoryPath);
 		database.Open();
 		
@@ -38,6 +42,10 @@ public class SQLSample : MonoBehaviour {
 		QueryTable (1);
 
 		database.Close ();
+
+		#if UNITY_ANDROID
+		MyLibs.ToastMessage ("SQLCipher Done");
+		#endif
 	}
 
 	void QueryTable(int id) {
